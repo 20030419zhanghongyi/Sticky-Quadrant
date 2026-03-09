@@ -25,11 +25,12 @@
 
 ## 截图
 
-> 以下为占位，后续由作者补图。
-
 - Screenshot 1：收起态右上角便签挂件
+- <img width="1280" height="800" alt="屏幕截图 2026-03-09 114251" src="https://github.com/user-attachments/assets/55ff79d9-80d9-4099-b089-d79d76762dd7" />
+
 - Screenshot 2：展开态四象限工作区
-- Screenshot 3：拖拽与排序结算示意
+- <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/f3b0cddc-074d-4f68-acb0-f61bac0bf659" />
+
 
 ## 作者
 
