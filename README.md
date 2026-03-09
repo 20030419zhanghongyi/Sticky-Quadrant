@@ -1,4 +1,5 @@
 ﻿# Sticky Quadrant（便签四象限）
+ <img width="625" height="182" alt="image" src="https://github.com/user-attachments/assets/42c96eb6-c64d-4577-8299-65361e205934" />
 
 一个桌面端轻量任务工具：以右上角便签挂件为入口，在全屏四象限工作区中完成任务投放、拖动与排序。
 
