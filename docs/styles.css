@@ -1,8 +1,7 @@
 :root {
   color-scheme: light;
   --bg: #f7f2e8;
-  --bg-deep: #efe4d0;
-  --paper: rgba(255, 252, 246, 0.86);
+  --paper: rgba(255, 252, 246, 0.88);
   --paper-strong: #fffdf8;
   --ink: #2d251e;
   --muted: #6a5e50;
@@ -28,8 +27,8 @@ body {
   min-height: 100vh;
   color: var(--ink);
   background:
-    radial-gradient(circle at 0% 0%, rgba(224, 162, 67, 0.16), transparent 24%),
-    radial-gradient(circle at 100% 8%, rgba(255, 255, 255, 0.92), transparent 20%),
+    radial-gradient(circle at 0% 0%, rgba(224, 162, 67, 0.14), transparent 24%),
+    radial-gradient(circle at 100% 10%, rgba(255, 255, 255, 0.95), transparent 20%),
     linear-gradient(180deg, #fcf8f1 0%, var(--bg) 100%);
 }
 
@@ -51,42 +50,42 @@ figure {
 }
 
 .page {
-  width: min(1180px, calc(100% - 40px));
+  width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 44px 0 80px;
+  padding: 46px 0 88px;
 }
 
 .hero,
 .section {
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 28px;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 30px;
   align-items: center;
 }
 
 .hero-copy,
 .hero-visual,
-.screen-card,
 .fit-card,
-.mode-card,
+.desktop-state,
+.mode-panel,
 .cta {
   border: 1px solid var(--line);
-  border-radius: 32px;
+  border-radius: 34px;
   background: var(--paper);
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
 }
 
 .hero-copy {
-  padding: 40px 38px;
+  padding: 44px 40px;
 }
 
 .hero-visual {
-  padding: 20px;
+  padding: 22px;
 }
 
 .eyebrow {
@@ -99,27 +98,27 @@ figure {
 }
 
 .kicker {
-  max-width: 34rem;
+  max-width: 36rem;
   color: var(--soft);
   font-size: 0.98rem;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 h1 {
   margin-top: 22px;
-  max-width: 12ch;
-  font-size: clamp(2rem, 3vw, 3rem);
-  line-height: 1.28;
+  max-width: 13ch;
+  font-size: clamp(1.86rem, 2.8vw, 2.8rem);
+  line-height: 1.4;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .headline-en {
   margin-top: 14px;
-  max-width: 28rem;
+  max-width: 30rem;
   color: var(--soft);
-  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.35vw, 1.24rem);
+  line-height: 1.7;
   font-weight: 600;
 }
 
@@ -127,12 +126,12 @@ h1 {
 .copy-en,
 .section-note {
   color: var(--muted);
-  line-height: 1.85;
+  line-height: 1.9;
 }
 
 .lead {
   margin-top: 22px;
-  max-width: 31rem;
+  max-width: 32rem;
   font-size: 1.02rem;
 }
 
@@ -148,7 +147,7 @@ h1 {
 }
 
 .hero-actions {
-  margin-top: 28px;
+  margin-top: 30px;
 }
 
 .button {
@@ -179,38 +178,27 @@ h1 {
 
 .button.secondary {
   border-color: var(--line);
-  background: rgba(255, 255, 255, 0.64);
-}
-
-.hero-shot {
-  margin: 0;
-  overflow: hidden;
-  border-radius: 24px;
-  background: linear-gradient(180deg, #fffaf1 0%, #f2e7d3 100%);
-  box-shadow: var(--shadow-strong);
-}
-
-.hero-shot img {
-  width: 100%;
-  height: clamp(360px, 42vw, 620px);
-  object-fit: cover;
-  object-position: center top;
+  background: rgba(255, 255, 255, 0.66);
 }
 
 .section {
-  padding: 36px 34px;
+  padding: 38px 36px;
   border: 1px solid var(--line);
-  border-radius: 32px;
-  background: rgba(255, 250, 243, 0.7);
+  border-radius: 34px;
+  background: rgba(255, 250, 243, 0.72);
 }
 
 .section-heading {
-  margin-bottom: 26px;
+  margin-bottom: 28px;
+}
+
+.section-heading-wide {
+  max-width: 52rem;
 }
 
 h2 {
-  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
-  line-height: 1.35;
+  font-size: clamp(1.7rem, 2.55vw, 2.45rem);
+  line-height: 1.42;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -221,78 +209,77 @@ h3 span {
 }
 
 .section-note {
-  max-width: 46rem;
+  max-width: 48rem;
   margin-top: 12px;
   font-size: 0.98rem;
 }
 
-.screenshots-grid,
+.desktop-story,
 .fit-grid,
-.modes-grid {
+.modes-story {
   display: grid;
-  gap: 22px;
+  gap: 24px;
 }
 
-.screenshots-grid {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-}
-
-.screen-card {
-  grid-column: span 4;
+.desktop-state,
+.mode-panel {
   padding: 22px;
 }
 
-.screen-card-wide {
-  grid-column: span 8;
+.desktop-state {
+  display: grid;
+  gap: 18px;
 }
 
-.screen-copy {
-  margin-bottom: 18px;
+.state-copy,
+.mode-copy {
+  max-width: 44rem;
 }
 
-.screen-index {
+.state-step {
   color: var(--accent-strong);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.screen-card h3,
+.desktop-state h3,
 .fit-card h3,
-.mode-card h3 {
+.mode-panel h3 {
   margin-top: 10px;
-  font-size: 1.18rem;
-  line-height: 1.55;
+  font-size: 1.16rem;
+  line-height: 1.65;
   font-weight: 700;
 }
 
-.screen-card p,
+.desktop-state p,
 .fit-card p,
-.mode-card p,
+.mode-panel p,
 .cta-copy p {
   margin-top: 12px;
 }
 
-.media-frame {
+.desktop-frame {
   margin: 0;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: 26px;
   border: 1px solid rgba(45, 37, 30, 0.08);
   background: var(--paper-strong);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
-.media-frame img {
+.desktop-frame img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   object-position: center top;
 }
 
-.media-frame-tall img {
-  aspect-ratio: 4 / 5;
-  object-fit: contain;
-  background: linear-gradient(180deg, #f7efd9 0%, #f0e3c0 100%);
+.desktop-frame-hero img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .fit-grid {
@@ -300,34 +287,14 @@ h3 span {
 }
 
 .fit-card {
-  padding: 24px;
+  padding: 26px;
   background:
     linear-gradient(135deg, rgba(224, 162, 67, 0.08), transparent 52%),
-    rgba(255, 255, 255, 0.46);
+    rgba(255, 255, 255, 0.48);
 }
 
-.modes-grid {
+.modes-story {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.mode-card {
-  overflow: hidden;
-}
-
-.media-frame-mode {
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.media-frame-mode img {
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: center top;
-}
-
-.mode-copy {
-  padding: 22px 22px 24px;
 }
 
 .cta {
@@ -347,18 +314,12 @@ h3 span {
   min-width: 218px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
   .hero,
-  .screenshots-grid,
   .fit-grid,
-  .modes-grid,
+  .modes-story,
   .cta {
     grid-template-columns: 1fr;
-  }
-
-  .screen-card,
-  .screen-card-wide {
-    grid-column: auto;
   }
 
   .cta-actions {
@@ -375,20 +336,15 @@ h3 span {
   .hero-copy,
   .hero-visual,
   .section,
-  .screen-card,
+  .desktop-state,
   .fit-card,
-  .mode-copy,
+  .mode-panel,
   .cta {
     padding: 22px;
   }
 
   h1 {
     max-width: none;
-    font-size: 1.82rem;
-  }
-
-  .hero-shot img {
-    height: auto;
-    aspect-ratio: 4 / 5;
+    font-size: 1.72rem;
   }
 }
