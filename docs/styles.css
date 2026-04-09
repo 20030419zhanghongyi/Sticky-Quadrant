@@ -61,14 +61,11 @@ figure {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: 30px;
-  align-items: center;
+  display: block;
+  min-height: calc(100vh - 72px);
 }
 
 .hero-copy,
-.hero-visual,
 .fit-card,
 .desktop-state,
 .mode-panel,
@@ -81,11 +78,21 @@ figure {
 }
 
 .hero-copy {
-  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 72px);
+  padding: 38px 42px 34px;
+}
+
+.hero-copy-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-visual {
-  padding: 18px;
+  width: 100%;
+  margin-top: 34px;
 }
 
 .eyebrow {
@@ -105,17 +112,17 @@ figure {
 }
 
 h1 {
-  margin-top: 22px;
-  max-width: 13ch;
-  font-size: clamp(1.86rem, 2.8vw, 2.8rem);
-  line-height: 1.4;
+  margin: 22px auto 0;
+  max-width: 15ch;
+  font-size: clamp(1.72rem, 2.45vw, 2.45rem);
+  line-height: 1.46;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .headline-en {
-  margin-top: 14px;
-  max-width: 30rem;
+  margin: 14px auto 0;
+  max-width: 34rem;
   color: var(--soft);
   font-size: clamp(1rem, 1.35vw, 1.24rem);
   line-height: 1.7;
@@ -130,8 +137,8 @@ h1 {
 }
 
 .lead {
-  margin-top: 22px;
-  max-width: 32rem;
+  margin: 22px auto 0;
+  max-width: 38rem;
   font-size: 1.02rem;
 }
 
@@ -148,9 +155,8 @@ h1 {
 
 .hero-actions {
   margin-top: 32px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: 10px;
 }
 
 .hero-actions-main,
@@ -159,6 +165,7 @@ h1 {
   flex-wrap: wrap;
   gap: 12px;
   align-items: stretch;
+  justify-content: center;
 }
 
 .button {
@@ -167,8 +174,8 @@ h1 {
   align-items: center;
   justify-content: center;
   min-height: 56px;
-  min-width: 206px;
-  padding: 11px 20px;
+  min-width: 214px;
+  padding: 12px 20px;
   border: 1px solid transparent;
   border-radius: 999px;
   text-decoration: none;
@@ -195,7 +202,7 @@ h1 {
 }
 
 .button.tertiary {
-  min-width: 192px;
+  min-width: 206px;
   border-color: rgba(45, 37, 30, 0.1);
   background: rgba(255, 255, 255, 0.52);
 }
@@ -212,8 +219,8 @@ h1 {
 
 .hero-illustration {
   position: relative;
-  min-height: 560px;
-  padding: 28px;
+  min-height: 520px;
+  padding: 30px 28px 26px;
   overflow: hidden;
   border-radius: 30px;
   background:
@@ -249,7 +256,7 @@ h1 {
   position: relative;
   z-index: 1;
   width: min(100%, 680px);
-  margin: 56px auto 42px;
+  margin: 56px auto 36px;
   border: 1px solid rgba(45, 37, 30, 0.08);
   border-radius: 28px;
   background: rgba(255, 252, 246, 0.78);
@@ -583,7 +590,6 @@ h3 span {
 }
 
 @media (max-width: 1080px) {
-  .hero,
   .fit-grid,
   .modes-story,
   .cta {
@@ -602,13 +608,16 @@ h3 span {
   }
 
   .hero-copy,
-  .hero-visual,
   .section,
   .desktop-state,
   .fit-card,
   .mode-panel,
   .cta {
     padding: 22px;
+  }
+
+  .hero-copy {
+    min-height: auto;
   }
 
   h1 {
