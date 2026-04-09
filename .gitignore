@@ -28,3 +28,9 @@ Thumbs.db
 
 # Electron
 release/
+
+# Duplicate website screenshots should live under docs/assets/, not here
+assets/hero-product-shot.png
+assets/screenshot-compact-widget.png
+assets/screenshot-quadrant-workspace.png
+assets/screenshot-working-panel.png
