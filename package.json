@@ -27,11 +27,11 @@
     "files": [
       "dist/**/*",
       "electron/**/*",
-      "build/icons/**/*",
+      "assets/quadrant_bookmark_icon_final.ico",
       "package.json"
     ],
     "win": {
-      "icon": "build/icons/icon.ico",
+      "icon": "assets/quadrant_bookmark_icon_final.ico",
       "signAndEditExecutable": false,
       "target": [
         {

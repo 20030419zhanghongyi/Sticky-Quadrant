@@ -8,6 +8,7 @@ const STATE_FILE_NAME = 'sticky-quadrant-state.json';
 const STATE_FILE_ENCODING = 'utf8';
 const SYSTEM_SETTINGS_FILE_NAME = 'sticky-quadrant-system-settings.json';
 const APP_PRODUCT_NAME = 'Sticky Quadrant';
+const APP_ICON_PATH = path.resolve(__dirname, '../assets/quadrant_bookmark_icon_final.ico');
 const COMPACT_WINDOW_WIDTH = 314;
 const COMPACT_WINDOW_HEIGHT = 676;
 const COMPACT_MARGIN_RIGHT = 48;
@@ -426,7 +427,6 @@ function createTray(iconPath) {
 }
 
 function createMainWindow() {
-  const iconPath = path.join(__dirname, '../build/icons/icon.ico');
   const distIndexPath = path.resolve(__dirname, '../dist/index.html');
   const start = getCompactWindowBounds();
   const mainWindow = new BrowserWindow({
@@ -440,7 +440,7 @@ function createMainWindow() {
     backgroundColor: '#00000000',
     transparent: true,
     frame: false,
-    icon: iconPath,
+    icon: APP_ICON_PATH,
     autoHideMenuBar: true,
     hasShadow: false,
     fullscreenable: true,
@@ -483,7 +483,7 @@ function createMainWindow() {
   }
 
   mainWindowRef = mainWindow;
-  createTray(iconPath);
+  createTray(APP_ICON_PATH);
 }
 
 app.whenReady().then(() => {
