@@ -1,0 +1,383 @@
+.sticky-widget {
+  --ghost-text: rgba(220, 226, 232, 0.82);
+  --ghost-box: rgba(220, 226, 232, 0.62);
+  --ghost-line: rgba(220, 226, 232, 0.28);
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  width: 214px;
+  height: 470px;
+  overflow: visible;
+  isolation: isolate;
+  transform: scale(1.25);
+  transform-origin: top right;
+  z-index: 20;
+}
+
+.sticky-widget.is-expanded {
+  opacity: 0.5;
+  filter: blur(10px);
+}
+
+.sticky-widget.is-ghost {
+  height: auto;
+}
+
+.sticky-widget.is-ghost-theme-dark {
+  --ghost-text: rgba(132, 144, 158, 0.82);
+  --ghost-box: rgba(132, 144, 158, 0.62);
+  --ghost-line: rgba(132, 144, 158, 0.3);
+}
+
+.sticky-paper {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 12px 3px 3px 12px;
+  background: #dddf8e;
+  border: 1px solid #cbcd74;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 14px 18px;
+  overflow: visible;
+}
+
+.sticky-paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  border-right: 1px solid rgba(169, 173, 102, 0.2);
+  z-index: 2;
+}
+
+.sticky-paper::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 12px;
+  background: #dddf8e;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.sticky-paper.is-ghost {
+  inset: 10px 2px auto 10px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0 0 52px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.sticky-paper.is-ghost::before,
+.sticky-paper.is-ghost::after {
+  display: none;
+}
+
+.sticky-widget-list {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.sticky-widget-list.is-ghost {
+  margin: 0;
+  padding: 0;
+  flex: 0 0 auto;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.task-item {
+  min-height: 52px;
+  padding: 11px 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid rgba(169, 173, 102, 0.44);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.task-item.is-multiline {
+  align-items: flex-start;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.task-item.is-ghost {
+  min-height: 46px;
+  padding: 10px 0 11px 2px;
+  gap: 11px;
+  border-bottom: 1px solid var(--ghost-line);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.task-marker {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 auto;
+  border: 2px solid rgba(169, 173, 102, 0.85);
+  border-radius: 3px;
+  background: #dddf8e;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.task-item.is-multiline .task-marker {
+  margin-top: 9px;
+}
+
+.task-marker.task-marker-checked::after {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: -8px;
+  width: 9px;
+  height: 20px;
+  border-right: 4px solid #6b936b;
+  border-bottom: 4px solid #6b936b;
+  transform: rotate(40deg);
+}
+
+.task-marker-ghost {
+  width: 12px;
+  height: 12px;
+  border-width: 1.5px;
+  border-color: var(--ghost-box);
+  border-radius: 3px;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  filter: none;
+  opacity: 1;
+}
+
+.sticky-widget.is-ghost .task-marker-ghost,
+.sticky-widget.is-ghost-theme-dark .task-marker-ghost {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.sticky-widget.is-ghost .task-marker-ghost::before,
+.sticky-widget.is-ghost .task-marker-ghost::after,
+.sticky-widget.is-ghost-theme-dark .task-marker-ghost::before,
+.sticky-widget.is-ghost-theme-dark .task-marker-ghost::after {
+  content: none !important;
+  display: none !important;
+}
+
+.task-text {
+  flex: 1 1 auto;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  color: #223a5e;
+  position: relative;
+  z-index: 2;
+  user-select: none;
+}
+
+.task-item.is-ghost .task-text {
+  color: var(--ghost-text);
+  font-weight: 550;
+  text-shadow: none;
+}
+
+.task-progress-layer {
+  position: absolute;
+  background: rgba(75, 75, 75, 0.4);
+  max-width: calc(100% - 4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.task-progress-layer.is-singleline {
+  left: 0;
+  top: 50%;
+  height: calc(1.92em + 8px);
+  transform: translateY(-50%);
+  border-radius: 8px;
+}
+
+.task-progress-layer.is-multiline {
+  left: 0;
+  top: 50%;
+  height: calc(2.4em + 8px);
+  transform: translateY(-50%);
+  border-radius: 8px;
+}
+
+.bookmark-ribbon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 82px;
+  background: transparent;
+  border: 0;
+  z-index: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.bookmark-ribbon::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 22px;
+  width: 22px;
+  height: 56px;
+  background: #6e2c2c;
+  border-radius: 0 0 3px 3px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 74%, 0 100%);
+}
+
+.bookmark-ribbon.is-ghost {
+  inset: 0;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+}
+
+.bookmark-ribbon.is-ghost::before {
+  display: none;
+}
+
+.ghost-bookmark-art {
+  --ghost-body-color: #f2f4f7;
+  --ghost-laptop-color: #c9ced6;
+  --ghost-face-color: #2f3b4a;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: block;
+  transform: translateY(19px) scale(0.75);
+  transform-origin: center center;
+  filter: none;
+  pointer-events: none;
+}
+
+.ghost-bookmark-art.is-dark {
+  --ghost-body-color: #8b95a1;
+  --ghost-laptop-color: #687483;
+  --ghost-face-color: #37414d;
+}
+
+.ghost-bookmark-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-color: transparent;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+}
+
+.ghost-bookmark-body {
+  background-color: var(--ghost-body-color);
+  mask-image: var(--ghost-mask-body);
+  -webkit-mask-image: var(--ghost-mask-body);
+  z-index: 1;
+}
+
+.ghost-bookmark-laptop {
+  background-color: var(--ghost-laptop-color);
+  mask-image: var(--ghost-mask-laptop);
+  -webkit-mask-image: var(--ghost-mask-laptop);
+  z-index: 2;
+}
+
+.ghost-bookmark-face {
+  background-color: var(--ghost-face-color);
+  mask-image: var(--ghost-mask-face);
+  -webkit-mask-image: var(--ghost-mask-face);
+  z-index: 3;
+}
+
+.bookmark-menu-wrap {
+  position: absolute;
+  right: 5px;
+  bottom: -52px;
+  width: 44px;
+  height: 82px;
+  z-index: 6;
+}
+
+.bookmark-menu-wrap.is-ghost {
+  right: -5px;
+  bottom: -7px;
+  width: 62px;
+  height: 62px;
+  pointer-events: auto;
+}
+
+.bookmark-context-menu {
+  position: absolute;
+  right: 48px;
+  bottom: 56px;
+  min-width: 104px;
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(110, 111, 62, 0.3);
+  background: rgba(245, 246, 223, 0.97);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 9;
+  pointer-events: auto;
+}
+
+.bookmark-context-menu.is-ghost {
+  right: 58px;
+  bottom: 14px;
+  border-color: rgba(200, 210, 220, 0.24);
+  background: rgba(28, 34, 41, 0.94);
+  box-shadow: 0 12px 26px rgba(7, 10, 14, 0.28);
+}
+
+.bookmark-context-item {
+  border: 0;
+  background: transparent;
+  color: #223a5e;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 7px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.bookmark-context-menu.is-ghost .bookmark-context-item {
+  color: rgba(236, 241, 246, 0.94);
+}
+
+.bookmark-context-item:active {
+  background: rgba(203, 205, 116, 0.45);
+}
+
+.bookmark-context-menu.is-ghost .bookmark-context-item:active {
+  background: rgba(220, 226, 232, 0.12);
+}
+
+

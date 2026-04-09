@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 820" role="img" aria-label="Compact widget placeholder">
+  <rect width="1280" height="820" fill="#f7efd9"/>
+  <rect x="905" y="80" width="280" height="620" rx="32" fill="#f8ed9f" stroke="#8a6f25" stroke-width="8"/>
+  <rect x="948" y="144" width="190" height="22" rx="11" fill="#8a6f25" opacity=".3"/>
+  <rect x="948" y="210" width="190" height="16" rx="8" fill="#8a6f25" opacity=".18"/>
+  <rect x="948" y="258" width="160" height="16" rx="8" fill="#8a6f25" opacity=".18"/>
+  <rect x="948" y="306" width="180" height="16" rx="8" fill="#8a6f25" opacity=".18"/>
+  <rect x="948" y="354" width="168" height="16" rx="8" fill="#8a6f25" opacity=".18"/>
+  <text x="84" y="176" font-family="Segoe UI, Tahoma, sans-serif" font-size="56" font-weight="700" fill="#2c241b">
+    Placeholder: compact widget screenshot
+  </text>
+  <text x="84" y="250" font-family="Segoe UI, Tahoma, sans-serif" font-size="34" fill="#6a5d47">
+    Replace this image with a real capture from the Windows app.
+  </text>
+</svg>

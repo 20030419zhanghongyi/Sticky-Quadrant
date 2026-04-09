@@ -1,45 +1,390 @@
-﻿# Sticky Quadrant（便签四象限）
- <img width="625" height="182" alt="image" src="https://github.com/user-attachments/assets/42c96eb6-c64d-4577-8299-65361e205934" />
+# Sticky Quadrant（便签四象限）
 
-一个桌面端轻量任务工具：以右上角便签挂件为入口，在全屏四象限工作区中完成任务投放、拖动与排序。
+<p align="center">
+  <img width="625" height="182" alt="Sticky Quadrant" src="https://github.com/user-attachments/assets/42c96eb6-c64d-4577-8299-65361e205934" />
+</p>
 
-> 当前仓库定位：产品展示 + 下载试用（GitHub Releases），不是开源代码仓库。
+Sticky Quadrant is a lightweight Windows desktop task manager built with **Electron + React + Vite**.
 
-## 产品特性
+Its core interaction model is simple:
 
-- 右上角常驻便签挂件（收起态）
-- 真全屏四象限工作区（展开态）
-- 任务输入、卡片生成、拖动放置
-- 垃圾桶删除 + 便签列表双向联动删除
-- 行内进度涂抹标记（点击/拖动）
-- 排序结算回写便签列表（当前显示前 9 条）
-- 本地持久化（重启恢复）
-- 托盘常驻、隐藏到后台、右键控制菜单
-- Windows 开机自启（打包版）
+- a compact sticky-note widget stays in the **top-right corner** of your desktop
+- one click expands it into a **full-screen four-quadrant workspace**
+- tasks can be **created, dragged, ranked, deleted, and persisted locally**
 
-## 使用方式
+This repository is primarily a **desktop application repository**, not a normal web-only project.
 
-1. 前往 GitHub Releases 下载 Windows 版本（`.exe`）
-2. 双击运行
-3. 左键书签进入工作区，输入任务并回车生成卡片
-4. 拖动卡片到目标位置，空输入回车结算并回到便签态
+---
 
-## 截图
+## Why Sticky Quadrant
 
-- Screenshot 1：收起态右上角便签挂件
-- <img width="1280" height="800" alt="屏幕截图 2026-03-09 114251" src="https://github.com/user-attachments/assets/55ff79d9-80d9-4099-b089-d79d76762dd7" />
+Most to-do tools are good at storing tasks, but bad at helping you **see priorities at a glance** while you work.
 
-- Screenshot 2：展开态四象限工作区
-- <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/f3b0cddc-074d-4f68-acb0-f61bac0bf659" />
+Sticky Quadrant is designed around a three-step interaction loop:
 
+**Reminder → Focus → Decision**
 
-## 作者
+- **Reminder**: a compact sticky widget remains visible on the desktop
+- **Focus**: tasks stay within view while you work
+- **Decision**: switch into the quadrant workspace to sort tasks by urgency and importance
 
-- 作者：张二本
-- 邮箱：20030419zhanghongyi@gmail.com
+The goal is not to become a heavy project-management system, but to be a small, always-available prioritization tool for daily work.
 
-## 权利声明（非开源）
+---
 
-本仓库当前仅用于产品介绍与试用版本发布，暂未开放源代码许可。  
-未经作者书面许可，不得复制、修改、分发或商用本项目代码与相关实现。  
-作者保留全部权利。
+## Core Features
+
+- **Compact sticky-note widget** in the top-right corner
+- **Full-screen four-quadrant workspace**
+- **Drag-and-drop task cards**
+- **Urgency / importance based prioritization**
+- **Local persistence**
+- **Desktop-first workflow**
+- **Windows packaging support**
+- **GitHub Pages showcase + GitHub Actions release automation**
+
+---
+
+## Screenshots
+
+### 1. Compact sticky widget
+Top-right desktop sticky note for low-friction task visibility.
+
+<p align="center">
+  <img width="1280" height="800" alt="Compact sticky widget" src="https://github.com/user-attachments/assets/55ff79d9-80d9-4099-b089-d79d76762dd7" />
+</p>
+
+### 2. Full-screen quadrant workspace
+A focused workspace for sorting tasks into urgency / importance quadrants.
+
+<p align="center">
+  <img width="1280" height="800" alt="Quadrant workspace" src="https://github.com/user-attachments/assets/f3b0cddc-074d-4f68-acb0-f61bac0bf659" />
+</p>
+
+---
+
+## Access Points
+
+- **Online showcase page**  
+  `https://20030419zhanghongyi.github.io/Sticky-Quadrant/`
+
+- **Latest Windows release**  
+  `https://github.com/20030419zhanghongyi/Sticky-Quadrant/releases/latest`
+
+- **Repository**  
+  `https://github.com/20030419zhanghongyi/Sticky-Quadrant`
+
+---
+
+## Tech Stack
+
+- **Electron**
+- **React**
+- **Vite**
+- **TypeScript**
+- **electron-builder**
+
+---
+
+## Local Development
+
+### 1. Install dependencies
+
+```powershell
+npm ci
+2. Run the app in development mode
+npm run dev
+Other useful commands
+npm run dev:renderer
+npm run start
+Build and Packaging
+Build the renderer
+npm run build:renderer
+Build Windows artifacts
+npm run pack:win
+Optional packaging commands
+npm run pack:win:nsis
+npm run pack:win:portable
+Output directory
+release/
+Current Windows artifacts
+Sticky-Quadrant-Setup-<version>-x64.exe
+Sticky-Quadrant-Portable-<version>-x64.exe
+Delivery Model
+
+This project uses a split delivery model:
+
+GitHub Pages hosts the static showcase page from docs/
+GitHub Actions builds Windows artifacts when a version tag is pushed
+GitHub Releases hosts downloadable Windows builds
+
+Important:
+The GitHub Pages site is only a showcase page, not the production runtime of the desktop application.
+
+Release Automation
+
+Tag pushes matching v* trigger the automated Windows release workflow.
+
+Example:
+
+git tag v0.1.0
+git push origin v0.1.0
+
+The release workflow will:
+
+Install dependencies
+Build the renderer
+Package the Electron app for Windows
+Create or update the GitHub Release
+Upload the generated .exe files
+Repository Structure
+.
+├─ electron/              # Electron main process and preload bridge
+├─ src/                   # React renderer source
+├─ docs/                  # GitHub Pages showcase site
+├─ .github/workflows/     # Release and Pages automation
+├─ release/               # Local packaged outputs
+├─ build/icons/           # Packaging icon assets
+├─ package.json
+└─ README.md
+Notes
+This is a desktop-first project.
+The GitHub Pages site is for presentation and download guidance only.
+The current release flow does not include Windows code signing.
+If placeholder screenshots are still present in the showcase, they should be replaced with real product captures later.
+Roadmap
+
+Planned / possible future improvements:
+
+better task editing flow
+improved visual consistency across all UI states
+keyboard shortcuts for fast task creation
+smoother state transitions between sticky mode and quadrant mode
+richer persistence and recovery
+optional themes / customization
+Author
+
+Zhang Hongyi
+
+Email: 20030419zhanghongyi@gmail.com
+GitHub: https://github.com/20030419zhanghongyi
+Additional Documentation
+DEPLOYMENT.md
+RELEASE_SUMMARY.md
+
+然后你现在这样处理冲突最省事：
+
+```bash
+git checkout --theirs README.md
+
+别用这个了，因为我要你用新内容直接覆盖。
+你现在直接：
+
+用我上面这版内容覆盖 README.md
+保存
+执行：
+git add README.md
+git rebase --continue
+
+如果 rebase 顺利结束，再继续：
+
+git push origin main
+git tag v0.1.0
+git push origin v0.1.0
+
+如果你愿意，我下一条可以直接继续帮你写一版 更像开源项目首页、会更容易拿 star 的 README 文案风格。
+
+给我一个完整的，可以一次粘贴的md格式的readme
+Thought for 4s
+# Sticky Quadrant（便签四象限）
+
+<p align="center">
+  <img width="625" height="182" alt="Sticky Quadrant" src="https://github.com/user-attachments/assets/42c96eb6-c64d-4577-8299-65361e205934" />
+</p>
+
+<p align="center">
+  A lightweight desktop task manager that combines a sticky-note widget with a full-screen urgency/importance quadrant workspace.
+</p>
+
+---
+
+## Overview
+
+Sticky Quadrant is a lightweight **Windows desktop task management tool** built with **Electron + React + Vite**.
+
+It is designed around a simple interaction flow:
+
+- a compact sticky-note widget stays in the **top-right corner**
+- one click expands it into a **full-screen four-quadrant workspace**
+- tasks can be **created, dragged, ranked, deleted, and stored locally**
+
+This repository is primarily a **desktop application repository**, not a typical web-only project.
+
+---
+
+## Why Sticky Quadrant
+
+Most to-do tools are good at collecting tasks, but not great at helping you **see priorities instantly while working**.
+
+Sticky Quadrant focuses on a small but useful loop:
+
+**Reminder → Focus → Decision**
+
+- **Reminder**: a compact sticky widget remains visible on the desktop
+- **Focus**: tasks stay within sight during work
+- **Decision**: switch into the quadrant workspace to sort tasks by urgency and importance
+
+The goal is not to become a heavy project-management platform.  
+The goal is to be a **small, always-available prioritization tool** for daily work.
+
+---
+
+## Core Features
+
+- Compact sticky-note widget in the top-right corner
+- Full-screen urgency/importance quadrant workspace
+- Drag-and-drop task cards
+- Visual priority sorting
+- Local persistence
+- Desktop-first interaction model
+- Windows installer and portable executable packaging
+- GitHub Pages showcase + GitHub Actions release automation
+
+---
+
+## Screenshots
+
+### 1. Compact sticky widget
+
+Top-right desktop sticky note for low-friction task visibility.
+
+<p align="center">
+  <img width="1280" height="800" alt="Compact sticky widget" src="https://github.com/user-attachments/assets/55ff79d9-80d9-4099-b089-d79d76762dd7" />
+</p>
+
+### 2. Full-screen quadrant workspace
+
+A focused workspace for sorting tasks into urgency / importance quadrants.
+
+<p align="center">
+  <img width="1280" height="800" alt="Quadrant workspace" src="https://github.com/user-attachments/assets/f3b0cddc-074d-4f68-acb0-f61bac0bf659" />
+</p>
+
+### 3. Expanded workspace / in-context working state
+
+The task panel stays visible while you work, making prioritization easier without losing context.
+
+<p align="center">
+  <img width="1280" height="800" alt="Expanded workspace" src="https://github.com/user-attachments/assets/f3b0cddc-074d-4f68-acb0-f61bac0bf659" />
+</p>
+
+---
+
+## Access Points
+
+- **Online showcase page**  
+  `https://20030419zhanghongyi.github.io/Sticky-Quadrant/`
+
+- **Latest Windows release**  
+  `https://github.com/20030419zhanghongyi/Sticky-Quadrant/releases/latest`
+
+- **Repository**  
+  `https://github.com/20030419zhanghongyi/Sticky-Quadrant`
+
+---
+
+## Tech Stack
+
+- **Electron**
+- **React**
+- **Vite**
+- **TypeScript**
+- **electron-builder**
+
+---
+
+## Local Development
+
+### 1. Install dependencies
+
+```powershell
+npm ci
+2. Run the app in development mode
+npm run dev
+Other useful commands
+npm run dev:renderer
+npm run start
+Build and Packaging
+Build the renderer
+npm run build:renderer
+Build Windows artifacts
+npm run pack:win
+Optional packaging commands
+npm run pack:win:nsis
+npm run pack:win:portable
+Output directory
+release/
+Current Windows artifacts
+Sticky-Quadrant-Setup-<version>-x64.exe
+Sticky-Quadrant-Portable-<version>-x64.exe
+Delivery Model
+
+This project uses a split delivery model:
+
+GitHub Pages hosts the static showcase page from docs/
+GitHub Actions builds Windows artifacts when a version tag is pushed
+GitHub Releases hosts downloadable Windows builds
+
+Important:
+The GitHub Pages site is only a showcase page, not the production runtime of the desktop application.
+
+Release Automation
+
+Tag pushes matching v* trigger the automated Windows release workflow.
+
+Example:
+
+git tag v0.1.0
+git push origin v0.1.0
+
+The release workflow will:
+
+Install dependencies
+Build the renderer
+Package the Electron app for Windows
+Create or update the GitHub Release
+Upload the generated .exe files
+Repository Structure
+.
+├─ .github/workflows/     # GitHub Actions for Pages and Windows release
+├─ docs/                  # GitHub Pages showcase site
+├─ electron/              # Electron main process and preload bridge
+├─ src/                   # React renderer source
+├─ release/               # Local packaged outputs
+├─ build/icons/           # Packaging icon assets
+├─ package.json
+└─ README.md
+Notes
+This is a desktop-first project.
+The GitHub Pages site is for presentation and download guidance only.
+The current release flow does not include Windows code signing.
+If placeholder screenshots are still present in the showcase, they should be replaced with real product captures later.
+Roadmap
+
+Possible future improvements:
+
+better task editing flow
+improved visual consistency across all UI states
+keyboard shortcuts for fast task creation
+smoother transitions between sticky mode and quadrant mode
+richer persistence and recovery
+optional themes and customization
+Author
+
+Zhang Hongyi
+
+Email: 20030419zhanghongyi@gmail.com
+GitHub: https://github.com/20030419zhanghongyi
+Additional Documentation
+DEPLOYMENT.md
+RELEASE_SUMMARY.md

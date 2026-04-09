@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 820" role="img" aria-label="Workspace placeholder">
+  <rect width="1280" height="820" fill="#f4ead2"/>
+  <line x1="640" y1="90" x2="640" y2="730" stroke="#8a6f25" stroke-width="8" opacity=".45"/>
+  <line x1="140" y1="410" x2="1140" y2="410" stroke="#8a6f25" stroke-width="8" opacity=".45"/>
+  <rect x="196" y="168" width="170" height="118" rx="20" fill="#f8ed9f" stroke="#8a6f25" stroke-width="6"/>
+  <rect x="740" y="198" width="186" height="126" rx="20" fill="#ffd9a0" stroke="#8a6f25" stroke-width="6"/>
+  <rect x="288" y="504" width="180" height="122" rx="20" fill="#fff4cf" stroke="#8a6f25" stroke-width="6"/>
+  <rect x="812" y="512" width="196" height="130" rx="20" fill="#f8ed9f" stroke="#8a6f25" stroke-width="6"/>
+  <text x="88" y="100" font-family="Segoe UI, Tahoma, sans-serif" font-size="56" font-weight="700" fill="#2c241b">
+    Placeholder: full-screen workspace screenshot
+  </text>
+  <text x="88" y="760" font-family="Segoe UI, Tahoma, sans-serif" font-size="34" fill="#6a5d47">
+    Replace with a real in-app screenshot showing the quadrant interaction.
+  </text>
+</svg>

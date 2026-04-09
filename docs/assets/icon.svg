@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Sticky Quadrant icon">
+  <rect width="128" height="128" rx="24" fill="#f0d66f"/>
+  <path d="M24 24h80v80H24z" fill="#fff6ce"/>
+  <path d="M64 24v80M24 64h80" stroke="#8a6f25" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="64" cy="64" r="10" fill="#eea73b"/>
+</svg>

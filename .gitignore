@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build / output
+dist/
+out/
+build/
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Electron
+release/
