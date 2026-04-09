@@ -3,9 +3,7 @@ import type { CSSProperties, MouseEventHandler } from 'react';
 import ghostMaskBody from '../../assets/ghost-mask-body.png';
 import ghostMaskLaptop from '../../assets/ghost-mask-laptop.png';
 import ghostMaskFace from '../../assets/ghost-mask-face.png';
-
-type DisplayMode = 'normal' | 'ghost';
-type GhostTheme = 'light' | 'dark';
+import type { DisplayMode, GhostTheme } from '../types/sticky';
 
 type BookmarkRibbonProps = {
   ghostTheme: GhostTheme;
