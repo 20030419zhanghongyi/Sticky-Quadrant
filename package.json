@@ -24,6 +24,12 @@
     "directories": {
       "output": "release"
     },
+    "extraResources": [
+      {
+        "from": "assets/quadrant_bookmark_icon_final.ico",
+        "to": "quadrant_bookmark_icon_final.ico"
+      }
+    ],
     "files": [
       "dist/**/*",
       "electron/**/*",
@@ -50,6 +56,7 @@
     },
     "nsis": {
       "artifactName": "Sticky-Quadrant-Setup-${version}-${arch}.${ext}",
+      "include": "electron/desktop-shortcut-icon.nsh",
       "installerHeaderIcon": "assets/quadrant_bookmark_icon_final.ico",
       "installerIcon": "assets/quadrant_bookmark_icon_final.ico",
       "uninstallerIcon": "assets/quadrant_bookmark_icon_final.ico",
