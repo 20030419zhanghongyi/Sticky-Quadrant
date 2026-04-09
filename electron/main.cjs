@@ -322,7 +322,6 @@ function refreshTrayContextMenu() {
   const uninstallerPath = findWindowsUninstallerPath();
   const trayMenu = Menu.buildFromTemplate([
     { label: 'Show Sticky Quadrant', click: () => showMainWindow() },
-    { type: 'separator' },
     {
       label: '开机自动启动',
       type: 'checkbox',
@@ -419,6 +418,9 @@ function createTray(iconPath) {
       return;
     }
     showMainWindow();
+  });
+  tray.on('right-click', () => {
+    refreshTrayContextMenu();
   });
   refreshTrayContextMenu();
 }
