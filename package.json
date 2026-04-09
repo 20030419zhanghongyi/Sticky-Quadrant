@@ -1,7 +1,7 @@
 {
   "name": "sticky-quadrant",
   "productName": "Sticky Quadrant",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "description": "Sticky Quadrant desktop task management app for Windows.",
   "author": "Zhang Erben <20030419zhanghongyi@gmail.com>",
