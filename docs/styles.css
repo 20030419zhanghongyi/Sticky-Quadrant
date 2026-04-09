@@ -85,7 +85,7 @@ figure {
 }
 
 .hero-visual {
-  padding: 22px;
+  padding: 18px;
 }
 
 .eyebrow {
@@ -147,7 +147,18 @@ h1 {
 }
 
 .hero-actions {
-  margin-top: 30px;
+  margin-top: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.hero-actions-main,
+.hero-actions-sub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: stretch;
 }
 
 .button {
@@ -155,8 +166,9 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 54px;
-  padding: 10px 20px;
+  min-height: 56px;
+  min-width: 206px;
+  padding: 11px 20px;
   border: 1px solid transparent;
   border-radius: 999px;
   text-decoration: none;
@@ -173,41 +185,229 @@ h1 {
 
 .button.primary {
   background: var(--accent);
+  color: #2d251e;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .button.secondary {
-  border-color: var(--line);
-  background: rgba(255, 255, 255, 0.66);
+  border-color: rgba(45, 37, 30, 0.14);
+  background: rgba(255, 255, 255, 0.86);
 }
 
 .button.tertiary {
+  min-width: 192px;
+  border-color: rgba(45, 37, 30, 0.1);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.button-star {
+  border-color: rgba(45, 37, 30, 0.16);
+  background: rgba(45, 37, 30, 0.06);
+}
+
+.button-feedback {
   border-color: rgba(182, 118, 23, 0.18);
-  background: rgba(224, 162, 67, 0.1);
+  background: rgba(224, 162, 67, 0.08);
 }
 
 .hero-illustration {
   position: relative;
-  padding: 24px;
-  border-radius: 28px;
+  min-height: 560px;
+  padding: 28px;
+  overflow: hidden;
+  border-radius: 30px;
   background:
-    radial-gradient(circle at 20% 12%, rgba(224, 162, 67, 0.18), transparent 22%),
+    radial-gradient(circle at 18% 16%, rgba(224, 162, 67, 0.16), transparent 20%),
+    radial-gradient(circle at 84% 20%, rgba(255, 255, 255, 0.78), transparent 18%),
     linear-gradient(180deg, #fffaf1 0%, #f2e6cf 100%);
   box-shadow: var(--shadow-strong);
 }
 
-.hero-art {
-  margin: 0;
-  overflow: hidden;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.36);
+.hero-orbit {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
 }
 
-.hero-art img {
-  width: 100%;
-  height: clamp(360px, 42vw, 620px);
-  object-fit: cover;
-  object-position: center;
+.hero-orbit-a {
+  top: 44px;
+  right: 56px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(224, 162, 67, 0.14), rgba(224, 162, 67, 0));
+}
+
+.hero-orbit-b {
+  left: 34px;
+  bottom: 42px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+}
+
+.hero-window {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 680px);
+  margin: 56px auto 42px;
+  border: 1px solid rgba(45, 37, 30, 0.08);
+  border-radius: 28px;
+  background: rgba(255, 252, 246, 0.78);
+  box-shadow: 0 28px 48px rgba(72, 54, 29, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.hero-window-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 16px 18px 12px;
+}
+
+.hero-window-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(45, 37, 30, 0.18);
+}
+
+.hero-canvas {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.5fr 0.74fr 1fr;
+  gap: 18px;
+  min-height: 370px;
+  padding: 18px 20px 22px;
+}
+
+.hero-widget,
+.hero-panel,
+.hero-quadrant {
+  position: relative;
+  border: 1px solid rgba(45, 37, 30, 0.08);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.hero-widget {
+  align-self: start;
+  min-height: 208px;
+  padding: 18px 16px;
+  background: linear-gradient(180deg, rgba(244, 221, 128, 0.82), rgba(243, 214, 95, 0.72));
+}
+
+.hero-widget-bookmark {
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  width: 16px;
+  height: 42px;
+  border-radius: 10px 10px 2px 2px;
+  background: rgba(45, 37, 30, 0.18);
+}
+
+.hero-widget-lines span {
+  display: block;
+  height: 10px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: rgba(45, 37, 30, 0.16);
+}
+
+.hero-widget-lines span:nth-child(1) {
+  width: 72%;
+}
+
+.hero-widget-lines span:nth-child(2) {
+  width: 82%;
+}
+
+.hero-widget-lines span:nth-child(3) {
+  width: 64%;
+}
+
+.hero-panel {
+  min-height: 272px;
+  padding: 18px;
+}
+
+.hero-panel-card {
+  border-radius: 18px;
+  background: rgba(255, 250, 243, 0.84);
+  border: 1px solid rgba(45, 37, 30, 0.07);
+}
+
+.hero-panel-card-a {
+  height: 90px;
+  margin-bottom: 12px;
+}
+
+.hero-panel-card-b,
+.hero-panel-card-c {
+  height: 68px;
+}
+
+.hero-panel-card-b {
+  margin-bottom: 12px;
+}
+
+.hero-quadrant {
+  min-height: 312px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.42));
+}
+
+.hero-axis {
+  position: absolute;
+  background: rgba(45, 37, 30, 0.16);
+}
+
+.hero-axis-x {
+  top: 50%;
+  left: 14%;
+  width: 72%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.hero-axis-y {
+  top: 14%;
+  left: 50%;
+  width: 2px;
+  height: 72%;
+  transform: translateX(-50%);
+}
+
+.hero-node {
+  position: absolute;
+  width: 72px;
+  height: 52px;
+  border-radius: 18px;
+  border: 1px solid rgba(45, 37, 30, 0.08);
+}
+
+.hero-node-a {
+  top: 64px;
+  left: 46px;
+  background: rgba(244, 221, 128, 0.86);
+}
+
+.hero-node-b {
+  top: 92px;
+  right: 54px;
+  background: rgba(255, 221, 173, 0.86);
+}
+
+.hero-node-c {
+  bottom: 64px;
+  left: 86px;
+  background: rgba(255, 251, 214, 0.9);
+}
+
+.hero-node-d {
+  right: 70px;
+  bottom: 58px;
+  background: rgba(224, 162, 67, 0.22);
 }
 
 .hero-note {
@@ -240,13 +440,13 @@ h1 {
 }
 
 .hero-note-top {
-  top: 18px;
-  left: 18px;
+  top: 22px;
+  left: 22px;
 }
 
 .hero-note-bottom {
-  right: 18px;
-  bottom: 18px;
+  right: 22px;
+  bottom: 22px;
 }
 
 .section {
@@ -416,9 +616,20 @@ h3 span {
     font-size: 1.72rem;
   }
 
-  .hero-art img {
-    height: auto;
-    aspect-ratio: 4 / 5;
+  .hero-window {
+    width: 100%;
+    margin: 52px auto 24px;
+  }
+
+  .hero-canvas {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-widget,
+  .hero-panel,
+  .hero-quadrant {
+    min-height: 200px;
   }
 
   .hero-note {
