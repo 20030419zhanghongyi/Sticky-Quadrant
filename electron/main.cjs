@@ -1,10 +1,12 @@
-const { app, BrowserWindow, Menu, Tray, ipcMain, screen } = require('electron');
+const { app, BrowserWindow, Menu, Tray, dialog, ipcMain, screen } = require('electron');
 const fsSync = require('node:fs');
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const { spawn } = require('node:child_process');
 
 const STATE_FILE_NAME = 'sticky-quadrant-state.json';
 const STATE_FILE_ENCODING = 'utf8';
+const SYSTEM_SETTINGS_FILE_NAME = 'sticky-quadrant-system-settings.json';
 const APP_PRODUCT_NAME = 'Sticky Quadrant';
 const COMPACT_WINDOW_WIDTH = 314;
 const COMPACT_WINDOW_HEIGHT = 676;
@@ -20,6 +22,10 @@ function getStateFilePath() {
   return path.join(app.getPath('userData'), STATE_FILE_NAME);
 }
 
+function getSystemSettingsFilePath() {
+  return path.join(app.getPath('userData'), SYSTEM_SETTINGS_FILE_NAME);
+}
+
 function sanitizePersistedJsonText(rawText) {
   if (typeof rawText !== 'string') {
     return '';
@@ -27,6 +33,36 @@ function sanitizePersistedJsonText(rawText) {
 
   // Tolerate UTF-8 BOM so edited files still parse correctly on Windows.
   return rawText.replace(/^\uFEFF/, '');
+}
+
+function loadSystemSettings() {
+  try {
+    const raw = fsSync.readFileSync(getSystemSettingsFilePath(), { encoding: STATE_FILE_ENCODING });
+    const sanitized = sanitizePersistedJsonText(raw);
+    const parsed = JSON.parse(sanitized);
+    if (!parsed || typeof parsed !== 'object') {
+      return {};
+    }
+    return parsed;
+  } catch (error) {
+    if (error && error.code === 'ENOENT') {
+      return {};
+    }
+
+    console.error('[system-settings:load] failed to decode settings', {
+      filePath: getSystemSettingsFilePath(),
+      error
+    });
+    return {};
+  }
+}
+
+function saveSystemSettings(settings) {
+  const filePath = getSystemSettingsFilePath();
+  const dir = path.dirname(filePath);
+  const serialized = JSON.stringify(settings, null, 2);
+  fsSync.mkdirSync(dir, { recursive: true });
+  fsSync.writeFileSync(filePath, Buffer.from(serialized, STATE_FILE_ENCODING));
 }
 
 async function loadPersistedState() {
@@ -197,6 +233,176 @@ async function applyWindowMode(mode) {
   return { ok: false };
 }
 
+function isWindowsStartupSupported() {
+  return process.platform === 'win32' && app.isPackaged;
+}
+
+function getWindowsLaunchAtStartupState() {
+  if (!isWindowsStartupSupported()) {
+    return false;
+  }
+
+  try {
+    return app.getLoginItemSettings({
+      path: process.execPath,
+      args: []
+    }).openAtLogin;
+  } catch (error) {
+    console.error('[auto-launch] failed to read openAtLogin state', error);
+    return false;
+  }
+}
+
+function setWindowsLaunchAtStartup(enabled) {
+  if (!isWindowsStartupSupported()) {
+    return { ok: false, enabled: false };
+  }
+
+  try {
+    app.setLoginItemSettings({
+      openAtLogin: Boolean(enabled),
+      path: process.execPath,
+      args: []
+    });
+    return { ok: true, enabled: getWindowsLaunchAtStartupState() };
+  } catch (error) {
+    console.error('[auto-launch] failed to update openAtLogin', { enabled, error });
+    return { ok: false, enabled: getWindowsLaunchAtStartupState() };
+  }
+}
+
+function ensureWindowsAutoLaunchDefault() {
+  if (!isWindowsStartupSupported()) {
+    return;
+  }
+
+  const settings = loadSystemSettings();
+  if (settings.launchAtStartupInitialized) {
+    return;
+  }
+
+  const result = setWindowsLaunchAtStartup(true);
+  if (!result.ok) {
+    return;
+  }
+
+  saveSystemSettings({
+    ...settings,
+    launchAtStartupInitialized: true
+  });
+}
+
+function findWindowsUninstallerPath() {
+  if (process.platform !== 'win32' || !app.isPackaged) {
+    return null;
+  }
+
+  const installDir = path.dirname(process.execPath);
+  const executableBaseName = path.basename(process.execPath, path.extname(process.execPath));
+  const candidates = [
+    path.join(installDir, `Uninstall ${executableBaseName}.exe`),
+    path.join(installDir, `Uninstall ${APP_PRODUCT_NAME}.exe`)
+  ];
+
+  for (const candidate of candidates) {
+    if (fsSync.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
+
+function refreshTrayContextMenu() {
+  if (!tray) {
+    return;
+  }
+
+  const launchAtStartupSupported = isWindowsStartupSupported();
+  const uninstallerPath = findWindowsUninstallerPath();
+  const trayMenu = Menu.buildFromTemplate([
+    { label: 'Show Sticky Quadrant', click: () => showMainWindow() },
+    { type: 'separator' },
+    {
+      label: '开机自动启动',
+      type: 'checkbox',
+      checked: launchAtStartupSupported && getWindowsLaunchAtStartupState(),
+      enabled: launchAtStartupSupported,
+      click: () => {
+        const nextEnabled = !getWindowsLaunchAtStartupState();
+        const result = setWindowsLaunchAtStartup(nextEnabled);
+        if (result.ok) {
+          const settings = loadSystemSettings();
+          saveSystemSettings({
+            ...settings,
+            launchAtStartupInitialized: true
+          });
+        }
+        refreshTrayContextMenu();
+      }
+    },
+    {
+      label: 'Quit',
+      click: () => {
+        isQuitting = true;
+        app.quit();
+      }
+    },
+    { type: 'separator' },
+    {
+      label: '卸载软件',
+      click: async () => {
+        if (!uninstallerPath) {
+          await dialog.showMessageBox({
+            type: 'info',
+            title: '无法启动卸载',
+            message: '当前运行环境没有可用的卸载程序。',
+            detail: '只有通过 Windows 安装器安装的版本才能从托盘菜单启动卸载。便携版或开发环境请使用系统对应的删除方式。'
+          });
+          return;
+        }
+
+        const result = await dialog.showMessageBox(mainWindowRef ?? undefined, {
+          type: 'warning',
+          buttons: ['取消', '确认卸载'],
+          defaultId: 1,
+          cancelId: 0,
+          title: '卸载 Sticky Quadrant',
+          message: '即将卸载 Sticky Quadrant。',
+          detail: '卸载程序即将启动，请按系统提示完成卸载。'
+        });
+
+        if (result.response !== 1) {
+          return;
+        }
+
+        setWindowsLaunchAtStartup(false);
+
+        try {
+          const child = spawn(uninstallerPath, [], {
+            detached: true,
+            stdio: 'ignore'
+          });
+          child.unref();
+        } catch (error) {
+          console.error('[uninstall] failed to launch uninstaller', { uninstallerPath, error });
+          await dialog.showMessageBox({
+            type: 'error',
+            title: '无法启动卸载',
+            message: '未能启动系统卸载程序。',
+            detail: uninstallerPath
+          });
+          return;
+        }
+
+        isQuitting = true;
+        app.quit();
+      }
+    }
+  ]);
+  tray.setContextMenu(trayMenu);
+}
+
 function createTray(iconPath) {
   if (tray || !fsSync.existsSync(iconPath)) {
     return;
@@ -214,18 +420,7 @@ function createTray(iconPath) {
     }
     showMainWindow();
   });
-
-  const trayMenu = Menu.buildFromTemplate([
-    { label: 'Show Sticky Quadrant', click: () => showMainWindow() },
-    {
-      label: 'Quit',
-      click: () => {
-        isQuitting = true;
-        app.quit();
-      }
-    }
-  ]);
-  tray.setContextMenu(trayMenu);
+  refreshTrayContextMenu();
 }
 
 function createMainWindow() {
@@ -289,25 +484,10 @@ function createMainWindow() {
   createTray(iconPath);
 }
 
-function configureWindowsAutoLaunch() {
-  if (process.platform !== 'win32' || !app.isPackaged) {
-    return;
-  }
-
-  try {
-    app.setLoginItemSettings({
-      openAtLogin: true,
-      path: process.execPath
-    });
-  } catch (error) {
-    console.error('[auto-launch] failed to configure openAtLogin', error);
-  }
-}
-
 app.whenReady().then(() => {
   app.setName(APP_PRODUCT_NAME);
   Menu.setApplicationMenu(null);
-  configureWindowsAutoLaunch();
+  ensureWindowsAutoLaunchDefault();
   ipcMain.handle('persistence:load', async () => loadPersistedState());
   ipcMain.handle('persistence:save', async (_event, payload) => savePersistedState(payload));
   ipcMain.handle('controls:restart', () => {
