@@ -19,7 +19,7 @@
     "start": "electron ."
   },
   "build": {
-    "appId": "com.stickyquadrant.app",
+    "appId": "com.aw.stickyquadrant",
     "productName": "Sticky Quadrant",
     "directories": {
       "output": "release"
@@ -50,6 +50,9 @@
     },
     "nsis": {
       "artifactName": "Sticky-Quadrant-Setup-${version}-${arch}.${ext}",
+      "installerHeaderIcon": "assets/quadrant_bookmark_icon_final.ico",
+      "installerIcon": "assets/quadrant_bookmark_icon_final.ico",
+      "uninstallerIcon": "assets/quadrant_bookmark_icon_final.ico",
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true
