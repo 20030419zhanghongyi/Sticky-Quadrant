@@ -1,7 +1,7 @@
 {
   "name": "sticky-quadrant",
   "productName": "Sticky Quadrant",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "Sticky Quadrant desktop task management app for Windows.",
   "author": "Zhang Erben <20030419zhanghongyi@gmail.com>",
@@ -12,9 +12,9 @@
     "dev:electron": "wait-on tcp:5173 && electron .",
     "build": "vite build",
     "build:renderer": "vite build",
-    "pack:win": "npm run build:renderer && electron-builder --win nsis portable",
-    "pack:win:portable": "npm run build:renderer && electron-builder --win portable",
-    "pack:win:nsis": "npm run build:renderer && electron-builder --win nsis",
+    "pack:win": "npm run build:renderer && electron-builder --win nsis portable --publish never",
+    "pack:win:portable": "npm run build:renderer && electron-builder --win portable --publish never",
+    "pack:win:nsis": "npm run build:renderer && electron-builder --win nsis --publish never",
     "preview": "vite preview",
     "start": "electron ."
   },
