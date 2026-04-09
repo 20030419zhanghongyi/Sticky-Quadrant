@@ -164,6 +164,7 @@ function createWindowManager({ app, BrowserWindow, screen, context, createTray }
       backgroundColor: '#00000000',
       transparent: true,
       frame: false,
+      skipTaskbar: true,
       icon: APP_ICON_PATH,
       autoHideMenuBar: true,
       hasShadow: false,
