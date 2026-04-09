@@ -6,7 +6,7 @@
     <title>Sticky Quadrant</title>
     <meta
       name="description"
-      content="Sticky Quadrant is a Windows desktop task manager built around a sticky-note widget and a full-screen Eisenhower matrix workspace."
+      content="Sticky Quadrant is a Windows desktop-first task prioritization tool with a compact sticky widget, a focused working panel, and a full-screen quadrant workspace."
     />
     <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
@@ -15,106 +15,215 @@
     <main class="page">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Desktop Application</p>
-          <h1>Sticky Quadrant</h1>
+          <p class="eyebrow">Windows Desktop App</p>
+          <p class="kicker">桌面优先的任务优先级整理工具 · Desktop-first task prioritization tool</p>
+          <h1>
+            <span>给注意力容易分散的人，一个更低打扰的任务整理方式</span>
+            <span class="headline-en">A calmer task workflow for distractible minds</span>
+          </h1>
           <p class="lead">
-            A Windows desktop task tool that starts from a compact sticky-note widget and expands into a full-screen
-            four-quadrant workspace.
+            从右上角便签开始，一键进入四象限工作区，把想做的事变成现在该做的事。
+          </p>
+          <p class="lead lead-en">
+            Start from a compact sticky widget, expand into a full-screen quadrant workspace, and turn vague tasks into
+            visible priorities.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="https://github.com/20030419zhanghongyi/Sticky-Quadrant/releases/latest">
-              Download Windows Build
+              下载 Windows 版本
+              <span>Download for Windows</span>
             </a>
             <a class="button secondary" href="https://github.com/20030419zhanghongyi/Sticky-Quadrant">
-              View Repository
+              查看 GitHub
+              <span>View on GitHub</span>
             </a>
           </div>
-          <dl class="facts">
-            <div>
-              <dt>Positioning</dt>
-              <dd>Electron desktop app for quick capture, prioritization, drag placement, and lightweight local task persistence.</dd>
+          <div class="hero-points">
+            <div class="mini-panel">
+              <strong>更低打扰 / Lower friction</strong>
+              <p>比传统待办清单更轻，更容易开始。 A lighter entry point than a long, heavy to-do list.</p>
             </div>
-            <div>
-              <dt>Primary Platform</dt>
-              <dd>Windows desktop. This repository is not a web-first application.</dd>
+            <div class="mini-panel">
+              <strong>更可视化 / More visual</strong>
+              <p>用象限和拖拽来决定优先级。 Use spatial sorting instead of text-heavy planning.</p>
             </div>
-          </dl>
+            <div class="mini-panel">
+              <strong>桌面优先 / Desktop-first</strong>
+              <p>适合 Windows 桌面随手捕捉与整理。 Built for quick capture and prioritization on Windows.</p>
+            </div>
+          </div>
         </div>
-        <div class="hero-card">
-          <img src="./assets/ghost-reference.png" alt="Sticky Quadrant product reference artwork" />
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Core Interaction Model</p>
-          <h2>Three key interfaces</h2>
-        </div>
-        <div class="grid grid-3">
-          <article class="panel">
-            <h3>1. Compact sticky widget</h3>
-            <p>The app lives in the top-right corner as a compact note list. It stays available without taking over the whole screen.</p>
-          </article>
-          <article class="panel">
-            <h3>2. Full-screen quadrant workspace</h3>
-            <p>Left-click expands into an Eisenhower-style workspace for urgent-important placement, visual sorting, and focus decisions.</p>
-          </article>
-          <article class="panel">
-            <h3>3. Drag, finalize, persist</h3>
-            <p>Tasks become cards, can be dragged and marked, and are written back into the sticky list with local persistence on restart.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Screenshots</p>
-          <h2>Current showcase assets</h2>
-          <p class="section-note">
-            The repository does not yet contain captured in-app screenshots. Two placeholders below should be replaced with real captures later.
+        <div class="hero-visual">
+          <div class="hero-shot">
+            <img
+              src="./assets/hero-product-shot.svg"
+              alt="Sticky Quadrant hero product shot placeholder. Replace this file with a real screenshot montage later."
+            />
+          </div>
+          <p class="hero-caption">
+            当前仓库没有真实产品截图，因此这里使用可替换的产品截图占位图。 Replace
+            <code>docs/assets/hero-product-shot.svg</code> with a real screenshot-led hero image later.
           </p>
         </div>
-        <div class="grid grid-screenshots">
-          <figure class="screenshot">
-            <img src="./assets/ghost-reference.png" alt="Sticky Quadrant visual reference asset" />
-            <figcaption>Current visual reference from the repository asset set.</figcaption>
-          </figure>
-          <figure class="screenshot">
-            <img src="./assets/showcase-compact-placeholder.svg" alt="Placeholder for compact widget screenshot" />
-            <figcaption>Replace with a real screenshot of the compact sticky widget.</figcaption>
-          </figure>
-          <figure class="screenshot">
-            <img src="./assets/showcase-workspace-placeholder.svg" alt="Placeholder for full-screen workspace screenshot" />
-            <figcaption>Replace with a real screenshot of the full-screen quadrant workspace.</figcaption>
-          </figure>
+      </section>
+
+      <section class="section value-strip">
+        <div class="value-card">
+          <p class="value-title">适合注意力容易被打断的人</p>
+          <p class="value-title-en">Designed for people who lose focus easily</p>
+        </div>
+        <div class="value-card">
+          <p class="value-title">从便签到象限，减少切换成本</p>
+          <p class="value-title-en">From sticky widget to quadrant, with less context-switching overhead</p>
+        </div>
+        <div class="value-card">
+          <p class="value-title">不是医疗产品，是一种更友好的工作流</p>
+          <p class="value-title-en">Not a medical product, just a workflow that may feel friendlier</p>
         </div>
       </section>
 
       <section class="section">
         <div class="section-heading">
-          <p class="eyebrow">Distribution</p>
-          <h2>How delivery works</h2>
+          <p class="eyebrow">Product Screens</p>
+          <h2>真实交互应该展示在这里<br /><span>These are the product moments visitors need to see</span></h2>
+          <p class="section-note">
+            当前仓库没有现成的 UI 截图，所以我已经把 3 个关键界面的占位文件放进 <code>docs/assets/</code>。后续只需要同名替换即可。
+          </p>
         </div>
-        <div class="grid grid-2">
-          <article class="panel">
-            <h3>GitHub Pages</h3>
-            <p>This page is published as a static showcase under the repository project path <code>/Sticky-Quadrant/</code>.</p>
+        <div class="screenshot-stack">
+          <article class="shot-card shot-card-wide">
+            <div class="shot-text">
+              <p class="shot-label">界面一 · Interface 1</p>
+              <h3>右上角便签挂件<br /><span>Compact sticky widget</span></h3>
+              <p>在不打断当前工作的前提下，随手看到任务、展开入口、保持存在感。</p>
+              <p class="copy-en">
+                A compact top-right widget for quick task visibility and a low-friction way back into the workflow.
+              </p>
+            </div>
+            <figure class="screenshot-frame">
+              <!-- Replace docs/assets/screenshot-compact-widget.svg with a real compact-state screenshot -->
+              <img
+                src="./assets/screenshot-compact-widget.svg"
+                alt="Compact sticky widget placeholder screenshot. Replace with a real screenshot."
+              />
+            </figure>
           </article>
-          <article class="panel">
-            <h3>GitHub Releases</h3>
-            <p>Tagged releases build Windows artifacts in GitHub Actions and attach the installer and portable executable to each Release.</p>
+
+          <article class="shot-card">
+            <div class="shot-text">
+              <p class="shot-label">界面二 · Interface 2</p>
+              <h3>工作面板状态<br /><span>Focused working panel</span></h3>
+              <p>比完整待办列表更轻，适合把刚想到的事情快速落下、准备排序。</p>
+              <p class="copy-en">
+                A lighter working state for capturing tasks before they grow into a long, mentally heavy list.
+              </p>
+            </div>
+            <figure class="screenshot-frame">
+              <!-- Replace docs/assets/screenshot-working-panel.svg with a real panel-state screenshot -->
+              <img
+                src="./assets/screenshot-working-panel.svg"
+                alt="Focused working panel placeholder screenshot. Replace with a real screenshot."
+              />
+            </figure>
+          </article>
+
+          <article class="shot-card">
+            <div class="shot-text">
+              <p class="shot-label">界面三 · Interface 3</p>
+              <h3>全屏四象限工作区<br /><span>Full-screen quadrant workspace</span></h3>
+              <p>用拖拽和视觉位置判断轻重缓急，而不是陷在纯文字清单里。</p>
+              <p class="copy-en">
+                A full-screen visual prioritization workspace that makes urgency and importance easier to decide.
+              </p>
+            </div>
+            <figure class="screenshot-frame">
+              <!-- Replace docs/assets/screenshot-quadrant-workspace.svg with a real workspace screenshot -->
+              <img
+                src="./assets/screenshot-quadrant-workspace.svg"
+                alt="Quadrant workspace placeholder screenshot. Replace with a real screenshot."
+              />
+            </figure>
           </article>
         </div>
       </section>
 
-      <section class="section contact">
+      <section class="section">
         <div class="section-heading">
-          <p class="eyebrow">Author</p>
-          <h2>Contact</h2>
+          <p class="eyebrow">Workflow Fit</p>
+          <h2>为什么它对 ADHD-friendly workflow 更友好<br /><span>Why this workflow may feel more ADHD-friendly</span></h2>
         </div>
-        <div class="panel">
-          <p><strong>Author:</strong> Zhang Erben</p>
-          <p><strong>Email:</strong> <a href="mailto:20030419zhanghongyi@gmail.com">20030419zhanghongyi@gmail.com</a></p>
+        <div class="fit-grid">
+          <article class="fit-card">
+            <h3>长待办清单容易造成压迫感</h3>
+            <p class="copy-en">Large task lists can feel overwhelming.</p>
+            <p>Sticky Quadrant 从小入口开始，不先把你丢进一整页密集任务里。</p>
+          </article>
+          <article class="fit-card">
+            <h3>任务优先级不清晰时更难开始</h3>
+            <p class="copy-en">Unclear priorities make starting harder.</p>
+            <p>四象限把“先做什么”变成一个更直观的判断，而不是反复权衡。</p>
+          </article>
+          <article class="fit-card">
+            <h3>频繁切换上下文会打断注意力</h3>
+            <p class="copy-en">Context switching breaks momentum.</p>
+            <p>从桌面便签直接进入工作区，减少在不同工具之间来回跳转。</p>
+          </article>
+          <article class="fit-card">
+            <h3>视觉化排序比纯文字更容易决策</h3>
+            <p class="copy-en">Visual sorting can be easier than text-heavy planning.</p>
+            <p>拖拽、位置、空间感，比一长串文字列表更容易帮助一些人做决定。</p>
+          </article>
+        </div>
+        <p class="disclaimer">
+          Sticky Quadrant 是桌面效率工具，不是医疗产品，也不提供治疗、诊断或临床承诺。
+          Sticky Quadrant is a desktop productivity tool, not a medical product, and makes no treatment or clinical claims.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">What It Offers</p>
+          <h2>更清楚的产品定位<br /><span>A clearer first impression for new visitors</span></h2>
+        </div>
+        <div class="feature-grid">
+          <article class="panel">
+            <h3>低摩擦任务捕捉<br /><span>Low-friction task capture</span></h3>
+            <p>先记下来，再整理，不要求你一开始就把一切想清楚。</p>
+            <p class="copy-en">Capture first, organize second, without demanding perfect clarity up front.</p>
+          </article>
+          <article class="panel">
+            <h3>可视化优先级整理<br /><span>Visual prioritization</span></h3>
+            <p>通过空间位置理解任务轻重缓急，适合不喜欢重文本工具的人。</p>
+            <p class="copy-en">Use placement and movement to make priority visible, especially if text-heavy tools feel noisy.</p>
+          </article>
+          <article class="panel">
+            <h3>Windows 桌面常驻<br /><span>Always near your desktop flow</span></h3>
+            <p>不需要把它当成另一套复杂系统，它更像桌面上的一个工作入口。</p>
+            <p class="copy-en">It stays close to your desktop routine instead of asking you to adopt a whole new system.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cta">
+        <div class="cta-copy">
+          <p class="eyebrow">Try It</p>
+          <h2>试试看，让任务从堆着变成看得清<br /><span>Try a workflow that makes priorities visible</span></h2>
+          <p>
+            如果你常常被长列表压住、很难决定先做什么，Sticky Quadrant 也许会比传统待办工具更顺手一点。
+          </p>
+          <p class="copy-en">
+            If long lists feel heavy and prioritization feels vague, Sticky Quadrant may offer a calmer starting point.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a class="button primary" href="https://github.com/20030419zhanghongyi/Sticky-Quadrant/releases/latest">
+            下载 Windows 版本
+            <span>Download the Windows build</span>
+          </a>
+          <a class="button secondary" href="https://github.com/20030419zhanghongyi/Sticky-Quadrant">
+            Star 仓库
+            <span>Star the repository on GitHub</span>
+          </a>
         </div>
       </section>
     </main>

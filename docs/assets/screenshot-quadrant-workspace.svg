@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Quadrant workspace screenshot placeholder">
+  <rect width="1200" height="760" fill="#f4e8d1"/>
+  <rect x="102" y="66" width="996" height="628" rx="32" fill="#fffaf0" stroke="#d5c29d" stroke-width="7"/>
+  <line x1="600" y1="116" x2="600" y2="644" stroke="#c8b28d" stroke-width="6"/>
+  <line x1="158" y1="380" x2="1042" y2="380" stroke="#c8b28d" stroke-width="6"/>
+  <rect x="214" y="186" width="152" height="112" rx="20" fill="#f3df84" stroke="#8f712a" stroke-width="5"/>
+  <rect x="722" y="200" width="178" height="120" rx="20" fill="#ffd6a7" stroke="#8f712a" stroke-width="5"/>
+  <rect x="272" y="456" width="166" height="118" rx="20" fill="#fff2c7" stroke="#8f712a" stroke-width="5"/>
+  <rect x="744" y="470" width="190" height="128" rx="20" fill="#f3df84" stroke="#8f712a" stroke-width="5"/>
+  <text x="142" y="720" font-family="Segoe UI, Tahoma, sans-serif" font-size="38" font-weight="700" fill="#2f261d">
+    Replace with a real screenshot of the full-screen quadrant workspace
+  </text>
+</svg>
